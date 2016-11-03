@@ -17,5 +17,11 @@ namespace cis237assignment4
         
         //Method to get the data for a droid into a nicely formated string that can be output.
         string GetPrintString();
+
+        // Method to sort array of droids using Generic Linked Lists
+        void SortDroids();
+
+        // Method to sort array of droids by total cost
+        void SortCost();
     }
 }

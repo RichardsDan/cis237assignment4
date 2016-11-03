@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace cis237assignment4
 {
     //Abstract class that implements the IDroid interface
-    abstract class Droid : IDroid
+    abstract class Droid : IDroid, IComparable
     {
         //some protected variables for the class
         protected string material;
@@ -22,6 +22,13 @@ namespace cis237assignment4
         {
             get { return totalCost; }
             set { totalCost = value; }
+        }
+
+        // Public property for Model
+        public string Model
+        {
+            get { return model; }
+            set { model = value; }
         }
 
         //Constructor that takes the main 3 parameters shared amongst all 4 types of droids
@@ -65,6 +72,18 @@ namespace cis237assignment4
             return "Material: " + this.material + Environment.NewLine +
                     "Model: " + this.model + Environment.NewLine +
                     "Color: " + this.color + Environment.NewLine;
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null)
+                return 1;
+
+            Droid otherDroid = obj as Droid;
+            if (otherDroid != null)
+                return this.TotalCost.CompareTo(otherDroid.TotalCost);
+            else
+                throw new Exception("Object is not a Droid");
         }
     }
 }

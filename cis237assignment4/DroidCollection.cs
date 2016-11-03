@@ -15,6 +15,12 @@ namespace cis237assignment4
         //Private variable to hold the length of the Collection
         private int lengthOfCollection;
 
+        GenericStackLinkedList<IDroid> protocolList = new GenericStackLinkedList<IDroid>();
+        GenericStackLinkedList<IDroid> utilityList = new GenericStackLinkedList<IDroid>();
+        GenericStackLinkedList<IDroid> janitorList = new GenericStackLinkedList<IDroid>();
+        GenericStackLinkedList<IDroid> astromechList = new GenericStackLinkedList<IDroid>();
+        GenericQueueLinkedList<IDroid> droidQueue = new GenericQueueLinkedList<IDroid>();
+
         //Constructor that takes in the size of the collection.
         //It sets the size of the internal array that will be used.
         //It also sets the length of the collection to zero since nothing is added yet.
@@ -92,6 +98,79 @@ namespace cis237assignment4
             {
                 return false;
             }
+        }
+
+        public void SortDroids()
+        {
+            CreateDroidStacks();
+            CreateQueue();
+            EnterQueue();
+        }
+
+        private void CreateDroidStacks()
+        {
+            foreach (Droid droid in this.droidCollection)
+            {
+                if (droid != null)
+                {
+                    switch (droid.Model)
+                    {
+                        case "Protocol":
+                            protocolList.AddToFront(droid);
+                            break;
+                        case "Utility":
+                            utilityList.AddToFront(droid);
+                            break;
+                        case "Janitorial":
+                            janitorList.AddToFront(droid);
+                            break;
+                        default:
+                            astromechList.AddToFront(droid);
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void CreateQueue()
+        {
+            while (!protocolList.IsEmpty)
+            {
+                droidQueue.AddToBack(protocolList.RemoveFromFront());
+            }
+            while (!utilityList.IsEmpty)
+            {
+                droidQueue.AddToBack(utilityList.RemoveFromFront());
+            }
+            while (!janitorList.IsEmpty)
+            {
+                droidQueue.AddToBack(janitorList.RemoveFromFront());
+            }
+            while (!astromechList.IsEmpty)
+            {
+                droidQueue.AddToBack(astromechList.RemoveFromFront());
+            }
+        }
+
+        private void EnterQueue()
+        {
+            for (int i = 0; i < droidCollection.Length; i++)
+            {
+                if (droidCollection[i] != null)
+                {
+                    droidCollection[i] = droidQueue.RemoveFromFront();
+                }
+            }
+        }
+
+        public void SortCost()
+        {
+            foreach (IDroid droid in droidCollection)
+            {
+                if (droid != null)
+                droid.CalculateTotalCost();
+            }
+            MergeSort.StartSort(droidCollection);
         }
 
         //The last method that must be implemented due to implementing the interface.

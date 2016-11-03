@@ -30,8 +30,9 @@ namespace cis237assignment4
         {
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Add a new droid to the system");
-            Console.WriteLine("2. Print the list of droids out");
-            Console.WriteLine("3. Exit the program");
+            Console.WriteLine("2. Sort the list of droids");
+            Console.WriteLine("3. Print the list of droids out");
+            Console.WriteLine("4. Exit the program");
         }
 
         //Method to get a menu choice
@@ -89,6 +90,39 @@ namespace cis237assignment4
             }
         }
 
+        // Print out menu for sorting droids
+        private void DisplaySortOptions()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Sort Droids by model or by cost?");
+            Console.WriteLine("1. Model");
+            Console.WriteLine("2. Cost");
+            Console.WriteLine("3. Do not sort droids");
+        }
+
+        public void SortDroids()
+        {
+            this.DisplaySortOptions();
+            int choice = this.GetMenuChoice();
+
+            //While the choice is not valid, keep prompting for a choice
+            while (choice < 1 || choice > 3)
+            {
+                //Display the menu again, and ask for the option again.
+                this.displayModelSelection();
+                choice = this.GetMenuChoice();
+            }
+
+            switch (choice)
+            {
+                case 1:
+                    droidCollection.SortDroids();
+                    break;
+                case 2:
+                    droidCollection.SortCost();
+                    break;
+            }
+        }
         //Method to print out the droid list
         public void PrintDroidList()
         {
@@ -216,7 +250,7 @@ namespace cis237assignment4
             int choice = this.GetMenuChoice();
 
             //while the chioce is not valid, wait until there is a valid one
-            while (choice < 0 || choice > 4)
+            while (choice <= 0 || choice > 4)
             {
                 this.displayMaterialSelection();
                 choice = this.GetMenuChoice();
@@ -250,7 +284,7 @@ namespace cis237assignment4
             int choice = this.GetMenuChoice();
 
             //While the choice is not valid, keep prompting for a choice
-            while (choice < 0 || choice > 5)
+            while (choice <= 0 || choice > 5)
             {
                 //Display the menu again, and ask for the option again.
                 this.displayModelSelection();

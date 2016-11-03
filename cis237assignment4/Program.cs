@@ -16,6 +16,8 @@ namespace cis237assignment4
             //Create a user interface and pass the droidCollection into it as a dependency
             UserInterface userInterface = new UserInterface(droidCollection);
 
+            MakeList(droidCollection);
+
             //Display the main greeting for the program
             userInterface.DisplayGreeting();
 
@@ -26,7 +28,7 @@ namespace cis237assignment4
             int choice = userInterface.GetMenuChoice();
 
             //While the choice is not equal to 3, continue to do work with the program
-            while (choice != 3)
+            while (choice != 4)
             {
                 //Test which choice was made
                 switch (choice)
@@ -35,9 +37,12 @@ namespace cis237assignment4
                     case 1:
                         userInterface.CreateDroid();
                         break;
-
-                    //Choose to Print the droid
+                    // Choose to sort the list of droids
                     case 2:
+                        userInterface.SortDroids();
+                        break;
+                    //Choose to Print the droid
+                    case 3:
                         userInterface.PrintDroidList();
                         break;
                 }
@@ -47,6 +52,22 @@ namespace cis237assignment4
             }
 
 
+        }
+
+        static void MakeList(IDroidCollection droids)
+        {
+            droids.Add("Carbonite", "Janitorial", "Bronze", true, false, false, true, true);
+            droids.Add("Quadranium", "Astromech", "Gold", true, true, true, true, 20);
+            droids.Add("Carbonite", "Utility", "Bronze", false, false, false);
+            droids.Add("Vanadium", "Astromech", "Silver", true, false, true, false, 10);
+            droids.Add("Quadranium", "Protocol", "Gold", 25);
+            droids.Add("Quadranium", "Utility", "Gold", true, true, true);
+            droids.Add("Quadranium", "Janitorial", "Silver", false, false, true, false, true);
+            droids.Add("Carbonite", "Protocol", "Bronze", 13);
+            droids.Add("Carbonite", "Astromech", "Bronze", false, false, false, false, 1);
+            droids.Add("Vanadium", "Janitorial", "Gold", false, false, true, true, false);
+            droids.Add("Vanadium", "Utility", "Silver", true, false, true);
+            droids.Add("Vandium", "Protocol", "Silver", 4);
         }
     }
 }
