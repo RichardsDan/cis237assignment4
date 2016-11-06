@@ -30,8 +30,6 @@ namespace cis237assignment4
 
             for (int k = low; k <= high; k++)
             {
-                if (aux[j] != null)
-                {
                     if (i > mid)
                         a[k] = aux[j++];
                     else if (j > high)
@@ -40,7 +38,6 @@ namespace cis237assignment4
                         a[k] = aux[j++];
                     else
                         a[k] = aux[i++];
-                }
             }
         }
 
@@ -48,10 +45,10 @@ namespace cis237assignment4
         /// Rearranges the array in ascending order
         /// </summary>
         /// <param name="a">The array to be sorted</param>
-        public static void StartSort(IComparable[] a)
+        public static void StartSort(IComparable[] a, int length)
         {
-            IComparable[] aux = new IComparable[a.Length];
-            Sort(a, aux, 0, (a.Length - 1));
+            IComparable[] aux = new IComparable[length];
+            Sort(a, aux, 0, (length - 1));
         }
 
         // MergeSort a[low..high] using auxiliary array aux[low..high]

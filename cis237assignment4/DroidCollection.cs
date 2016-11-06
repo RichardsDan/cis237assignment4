@@ -170,7 +170,7 @@ namespace cis237assignment4
                 if (droid != null)
                 droid.CalculateTotalCost();
             }
-            MergeSort.StartSort(droidCollection);
+            MergeSort.StartSort(droidCollection, lengthOfCollection);
         }
 
         //The last method that must be implemented due to implementing the interface.
