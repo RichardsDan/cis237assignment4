@@ -113,6 +113,7 @@ namespace cis237assignment4
                 choice = this.GetMenuChoice();
             }
 
+            // Determine whether to sort droids by model or by cost
             switch (choice)
             {
                 case 1:
@@ -122,6 +123,9 @@ namespace cis237assignment4
                     droidCollection.SortCost();
                     break;
             }
+            Console.WriteLine();
+            Console.WriteLine("List has been sorted");
+            Console.WriteLine();
         }
         //Method to print out the droid list
         public void PrintDroidList()

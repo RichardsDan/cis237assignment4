@@ -28,6 +28,7 @@ namespace cis237assignment4
             // Merge back to a[]
             int i = low, j = mid + 1;
 
+            // Compares each sorted half of the array and combines them together into one sorted array
             for (int k = low; k <= high; k++)
             {
                     if (i > mid)
@@ -54,9 +55,11 @@ namespace cis237assignment4
         // MergeSort a[low..high] using auxiliary array aux[low..high]
         private static void Sort(IComparable[] a, IComparable[] aux, int low, int high)
         {
+            // Base case
             if (high <= low)
                 return;
 
+            // Splits current piece of array into two halves then calls recursive Sort method on each half, then merges them together
             int mid = low + (high - low) / 2;
             Sort(a, aux, low, mid);
             Sort(a, aux, mid + 1, high);

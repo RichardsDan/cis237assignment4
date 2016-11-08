@@ -41,7 +41,7 @@ namespace cis237assignment4
                     case 2:
                         userInterface.SortDroids();
                         break;
-                    //Choose to Print the droid
+                    //Choose to Print the droids
                     case 3:
                         userInterface.PrintDroidList();
                         break;
@@ -50,8 +50,6 @@ namespace cis237assignment4
                 userInterface.DisplayMainMenu();
                 choice = userInterface.GetMenuChoice();
             }
-
-
         }
 
         static void MakeList(IDroidCollection droids)

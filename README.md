@@ -3,7 +3,7 @@
 
 ## Author
 
-
+Daniel Richards
 
 ## Description
 
@@ -85,11 +85,12 @@ Be sure to think about what the time complexity for the bucket sort will be. Thi
 
 ## Outside Resources Used
 
-
+http://algs4.cs.princeton.edu/22mergesort/Merge.java.html
+https://msdn.microsoft.com/en-us/library/system.icomparable.compareto(v=vs.110).aspx
 
 ## Known Problems, Issues, And/Or Errors in the Program
 
-
+None
 
 ## Assignment 3 Description for reference
 

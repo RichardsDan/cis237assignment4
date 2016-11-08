@@ -15,6 +15,7 @@ namespace cis237assignment4
         //Private variable to hold the length of the Collection
         private int lengthOfCollection;
 
+        // Create Linked Lists for sorting droids
         GenericStackLinkedList<IDroid> protocolList = new GenericStackLinkedList<IDroid>();
         GenericStackLinkedList<IDroid> utilityList = new GenericStackLinkedList<IDroid>();
         GenericStackLinkedList<IDroid> janitorList = new GenericStackLinkedList<IDroid>();
@@ -100,6 +101,9 @@ namespace cis237assignment4
             }
         }
 
+        /// <summary>
+        /// Method to sort Droids by model
+        /// </summary>
         public void SortDroids()
         {
             CreateDroidStacks();
@@ -107,12 +111,16 @@ namespace cis237assignment4
             EnterQueue();
         }
 
+        /// <summary>
+        /// Runs through array of droids and places each droid into lists, separated by model
+        /// </summary>
         private void CreateDroidStacks()
         {
             foreach (Droid droid in this.droidCollection)
             {
                 if (droid != null)
                 {
+                    // Determines model of droid and places it into a stack
                     switch (droid.Model)
                     {
                         case "Protocol":
@@ -132,6 +140,9 @@ namespace cis237assignment4
             }
         }
 
+        /// <summary>
+        /// Empties droid stacks into one queue
+        /// </summary>
         private void CreateQueue()
         {
             while (!protocolList.IsEmpty)
@@ -152,6 +163,9 @@ namespace cis237assignment4
             }
         }
 
+        /// <summary>
+        /// Enters contents of the droidQueue into the original array as a sorted list of droids
+        /// </summary>
         private void EnterQueue()
         {
             for (int i = 0; i < droidCollection.Length; i++)
@@ -163,8 +177,12 @@ namespace cis237assignment4
             }
         }
 
+        /// <summary>
+        /// Sorts array of droids by totalCost using a MergeSort
+        /// </summary>
         public void SortCost()
         {
+            // Calculate totalCost for each droid
             foreach (IDroid droid in droidCollection)
             {
                 if (droid != null)
